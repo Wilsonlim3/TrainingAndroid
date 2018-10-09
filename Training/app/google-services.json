@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "975196137385",
+    "firebase_url": "https://trainingfirebase-ce110.firebaseio.com",
+    "project_id": "trainingfirebase-ce110",
+    "storage_bucket": "trainingfirebase-ce110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975196137385:android:e3b326cbac39a628",
+        "android_client_info": {
+          "package_name": "com.example.wijen.training"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "975196137385-322eqac10l7ajai0m712njusjs5od92q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wijen.training",
+            "certificate_hash": "c88861f67903f58422c89079c2fbbab9a5200725"
+          }
+        },
+        {
+          "client_id": "975196137385-krq9bqr47s0l9rprmpb94506041tos7c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt5YLGnMQtsFoqBErczSUSHQIJF-6is_I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "975196137385-krq9bqr47s0l9rprmpb94506041tos7c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
