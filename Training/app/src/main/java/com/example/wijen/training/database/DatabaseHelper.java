@@ -369,8 +369,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 bookInfo.setBookId(cursor.getInt(cursor.getColumnIndex(BookInfo.COLUMN_ID)));
                 bookInfo.setItemId(cursor.getInt(cursor.getColumnIndex(BookInfo.COLUMN_ITEM)));
                 bookInfo.setUserId(cursor.getInt(cursor.getColumnIndex(BookInfo.COLUMN_USER)));
-                bookInfo.setStartDate("2018-10-04 11:00:00");
-                bookInfo.setEndDate("2018-10-04 12:00:0");
+                bookInfo.setStartDate(cursor.getString(cursor.getColumnIndex(BookInfo.COLUMN_StartDate)));
+                bookInfo.setEndDate(cursor.getString(cursor.getColumnIndex(BookInfo.COLUMN_EndDate)));
                 bookInfo.setTimestamp(cursor.getString(cursor.getColumnIndex(BookInfo.COLUMN_TIMESTAMP)));
 
                 bookInfos.add(bookInfo);

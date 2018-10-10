@@ -135,11 +135,6 @@ public class bookFragment extends Fragment implements View.OnClickListener{
        // String [] values = users.toArray();
 
 
-
-
-
-
-
     FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
         @Override
