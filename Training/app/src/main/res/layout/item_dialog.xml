@@ -1,187 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_margin"
-    android:paddingRight="@dimen/activity_margin"
-    android:paddingTop="@dimen/activity_margin">
 
-    <TextView android:id="@+id/dialog_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dimen_10"
-        android:fontFamily="sans-serif-medium"
-        android:lineSpacingExtra="8sp"
-        android:text="New Booking"
-        android:textColor="@color/colorAccent"
-        android:textSize="@dimen/lbl_new_note_title"
-        android:textStyle="normal" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-
-    <TextView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:lineSpacingExtra="8sp"
-        android:textColor="@color/colorAccent"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        android:text="Select Item" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingTop="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin">
 
-    <Spinner
-        android:id="@+id/itemSpinner"
-        android:layout_width="match_parent"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:layout_height="48dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:lineSpacingExtra="8sp"
-        android:textColor="@color/colorAccent"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        android:text="Select User" />
-
-    <Spinner
-        android:id="@+id/userSpinner"
-        android:layout_width="match_parent"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:layout_height="48dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:lineSpacingExtra="8sp"
-        android:textColor="@color/colorAccent"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        android:text="Start Date" />
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#c0c0c0"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
-    <EditText
-        android:id="@+id/in_date"
-        android:layout_width="200dp"
-        android:textSize="14sp"
-        android:layout_height="40dp"
-        android:minHeight="25dp"
-        android:hint="Booking Date"
-        android:textColor="#000000"
-        android:background= "@drawable/border"
-        android:layout_below="@+id/userSpinner"
-        android:layout_marginTop="3dp"
-
-         />
-
-    <Button
-        android:id="@+id/btn_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/in_date"
-        android:textSize="12sp"
-        android:text="SELECT DATE" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/in_time"
-            android:layout_width="200dp"
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lines="2"
-            android:hint = "Booking Time"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:fontFamily="sans-serif-medium"
+            android:lineSpacingExtra="8sp"
+            android:text="New Booking"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/lbl_new_note_title"
+            android:textStyle="normal" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:lineSpacingExtra="8sp"
+            android:text="Select Item"
+            android:textColor="@color/colorAccent"
             android:textSize="14sp"
-            android:textColor="#000000"
-            android:background= "@drawable/border"
+            android:textStyle="normal" />
 
-            android:layout_below="@+id/in_date" />
+        <Spinner
+            android:id="@+id/itemSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:popupBackground="#e5e5e5" />
 
-        <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SELECT TIME"
-        android:id="@+id/btn_time"
-            android:textSize="12sp"
-        android:layout_below="@+id/btn_date"
-        android:layout_alignLeft="@+id/btn_date"
-        android:layout_alignStart="@+id/btn_date" />
-
-</LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="33dp"
-        android:lineSpacingExtra="8sp"
-        android:textColor="@color/colorAccent"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        android:text="End Date" />
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#c0c0c0"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/endin_date"
-            android:layout_width="200dp"
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:lineSpacingExtra="8sp"
+            android:text="Select User"
+            android:textColor="@color/colorAccent"
             android:textSize="14sp"
-            android:layout_height="40dp"
-            android:minHeight="25dp"
-            android:background= "@drawable/border"
-            android:hint="Booking Date"
-            android:textColor="#000000"
-            android:layout_below="@+id/userSpinner"
+            android:textStyle="normal" />
+
+        <Spinner
+            android:id="@+id/userSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:popupBackground="#e5e5e5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/monthTxt"
+                android:layout_width="164dp"
+                android:layout_height="match_parent"
+                android:lineSpacingExtra="8sp"
+                android:text="Date"
+                android:textAlignment="center"
+                android:textColor="@color/colorAccent"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/dataStartTime"
+                android:layout_width="143dp"
+                android:layout_height="match_parent"
+                android:lineSpacingExtra="8sp"
+                android:text=""
+                android:textColor="@color/colorAccent"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/compactcalendar_viewBook"
+            android:layout_width="fill_parent"
+            android:layout_height="215dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:compactCalendarBackgroundColor="#e5e5e5"
+            app:compactCalendarCurrentDayBackgroundColor="@color/colorCalendarToday"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
+            app:compactCalendarDisplayOtherMonthDays="false"
+            app:compactCalendarMultiEventIndicatorColor="#fff"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextColor="#000"
+            app:compactCalendarTextSize="12sp"
 
             />
 
-        <Button
-            android:id="@+id/btn_endDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/in_date"
-            android:textSize="12sp"
-            android:text="SELECT DATE" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/endin_time"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:lines="2"
-            android:hint = "Booking Time"
-            android:background= "@drawable/border"
+            <EditText
+                android:id="@+id/txtStartTime"
+                android:layout_width="129dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:gravity="top|bottom"
+                android:hint="Start Time"
+                android:lineSpacingExtra="8sp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/startTimeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Start Time" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/monthEndTxt"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:lineSpacingExtra="8sp"
+            android:text="End Month"
+            android:textColor="@color/colorAccent"
             android:textSize="14sp"
-            android:textColor="#000000"
+            android:textStyle="normal" />
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/compactcalendar_viewBookEnd"
+            android:layout_width="fill_parent"
+            android:layout_height="215dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            app:compactCalendarBackgroundColor="#e5e5e5"
+            app:compactCalendarCurrentDayBackgroundColor="@color/colorCalendarToday"
+            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorAccent"
+            app:compactCalendarDisplayOtherMonthDays="false"
+            app:compactCalendarMultiEventIndicatorColor="#fff"
+            app:compactCalendarTargetHeight="250dp"
+            app:compactCalendarTextColor="#000"
+            app:compactCalendarTextSize="12sp"
+
             />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SELECT TIME"
-            android:id="@+id/btn_endTime"
-            android:textSize="12sp"
-            android:layout_below="@+id/btn_date"
-            android:layout_alignLeft="@+id/btn_date"
-            android:layout_alignStart="@+id/btn_date" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/txtEndTime"
+                android:layout_width="129dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="5dp"
+                android:gravity="top|bottom"
+                android:hint="Start Time"
+                android:lineSpacingExtra="8sp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <Button
+                android:id="@+id/endTimeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="End Time" />
+
+        </LinearLayout>
+
 
     </LinearLayout>
 
-
-
-
-</LinearLayout>
+</ScrollView>

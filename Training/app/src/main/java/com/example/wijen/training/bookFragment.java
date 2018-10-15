@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
@@ -23,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -39,13 +41,17 @@ import com.example.wijen.training.database.User;
 import com.example.wijen.training.utils.MyDividerItemDecoration;
 import com.example.wijen.training.utils.RecyclerTouchListener;
 import com.example.wijen.training.view.ItemsAdapter;
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 
@@ -66,6 +72,7 @@ public class bookFragment extends Fragment implements View.OnClickListener{
     private RecyclerView recyclerView;
     private TextView noNotesView;
     private DatabaseHelper db;
+    private long timeStart;
     private OnFragmentInteractionListener mListener;
     private List<String> values;
     private String[] valuesArray;
@@ -135,7 +142,7 @@ public class bookFragment extends Fragment implements View.OnClickListener{
        // String [] values = users.toArray();
 
 
-    FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+    FloatingActionButton fab =  v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -193,7 +200,6 @@ public class bookFragment extends Fragment implements View.OnClickListener{
             mListener.onFragmentInteraction(uri);
         }
     }
-
 
 
     @Override
@@ -254,6 +260,34 @@ public class bookFragment extends Fragment implements View.OnClickListener{
         View view = layoutInflaterAndroid.inflate(R.layout.item_dialog, null);
         AlertDialog.Builder alertDialogBuilderUserInput = new AlertDialog.Builder(getActivity());
         alertDialogBuilderUserInput.setView(view);
+        final CompactCalendarView compactCalendarView = view.findViewById(R.id.compactcalendar_viewBook);
+        final TextView monthTxt = view.findViewById(R.id.monthTxt);
+        final SimpleDateFormat dateFormatForMonth = new SimpleDateFormat("MMMM - yyyy", Locale.getDefault());
+        monthTxt.setText(dateFormatForMonth.format(compactCalendarView.getFirstDayOfCurrentMonth()));
+                Event ev1 = new Event(Color.GREEN, 1539323400000L, "Some extra data that I want to store.");
+        compactCalendarView.addEvent(ev1);
+        compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                //eventTxt.setText("");
+//                monthTxt.setText(dateFormatForMonth.format(dateClicked));
+//                List<Event> events = compactCalendarView.getEvents(dateClicked);
+//                for(Event event : events){
+//                    Log.i("Events","="+event.getData());
+//                    eventTxt.setText(event.getData().toString());
+//
+//                }
+//                Log.d("asd", "Day was clicked: " + dateClicked + " with events " + events);
+
+
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                //Log.d("asd", "Month was scrolled to: " + firstDayOfNewMonth);
+                monthTxt.setText(dateFormatForMonth.format(firstDayOfNewMonth));
+            }
+        });
 
         final Spinner spinner = (Spinner) view.findViewById(R.id.userSpinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, valuesArray );
@@ -265,21 +299,61 @@ public class bookFragment extends Fragment implements View.OnClickListener{
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         itemSpinner.setAdapter(itemSpinnerAdapter);
 
-        btnStartDate=view.findViewById(R.id.btn_date);
-        btnStartTime=view.findViewById(R.id.btn_time);
-        txtStartDate=view.findViewById(R.id.in_date);
-        txtStartTime=view.findViewById(R.id.in_time);
-        btnEndDate=view.findViewById(R.id.btn_endDate);
-        btnEndTime=view.findViewById(R.id.btn_endTime);
-        txtEndDate=view.findViewById(R.id.endin_date);
-        txtEndTime=view.findViewById(R.id.endin_time);
-        btnStartDate.setOnClickListener(this);
-        btnStartTime.setOnClickListener(this);
-        btnEndDate.setOnClickListener(this);
-        btnEndTime.setOnClickListener(this);
+        itemSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
+            {
+                compactCalendarView.removeAllEvents();
+                String selectedItem = parent.getItemAtPosition(position).toString(); //this is your selected item
+                Log.i("Selected",selectedItem);
+                SimpleDateFormat bookDates = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+                int pos = 0;
+                for(BookInfo temp : bookInfosList){
+                    if(items.get(pos).getNote().equals(selectedItem)) {
+                        Log.i("getNote", items.get(pos).getNote());
+
+                        try {
+                            String myString = bookInfosList.get(pos).getStartDate();
+                            Date bookDatee = bookDates.parse(myString);
+                            timeStart = bookDatee.getTime();
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        Event eventBook = new Event(Color.GREEN, timeStart, users.get(pos).getName() + " -- " + items.get(pos).getNote() + " until " + bookInfosList.get(pos).getEndDate());
+                        compactCalendarView.addEvent(eventBook);
+                    }
+                        pos += 1;
+
+                }
+
+
+            }
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+
+            }
+        });
+
+
+//        btnStartDate=view.findViewById(R.id.btn_date);
+//        btnStartTime=view.findViewById(R.id.btn_time);
+//        txtStartDate=view.findViewById(R.id.in_date);
+//        txtStartTime=view.findViewById(R.id.in_time);
+//        btnEndDate=view.findViewById(R.id.btn_endDate);
+//        btnEndTime=view.findViewById(R.id.btn_endTime);
+//        txtEndDate=view.findViewById(R.id.endin_date);
+//        txtEndTime=view.findViewById(R.id.endin_time);
+//        btnStartDate.setOnClickListener(this);
+//        btnStartTime.setOnClickListener(this);
+//        btnEndDate.setOnClickListener(this);
+//        btnEndTime.setOnClickListener(this);
 
         TextView dialogTitle = view.findViewById(R.id.dialog_title);
         dialogTitle.setText(!shouldUpdate ? "New Booking" : getString(R.string.lbl_edit_note_title));
+
+
+
+
 
         if (shouldUpdate && bookInfo != null) {
 //            inputItemId.setText(bookInfo.getItemId());
